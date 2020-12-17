@@ -11,8 +11,9 @@ This will help to monitor kubernetes with zabbix. This template is customized fo
 7. Apply template to zabbix host
 
 ## Create zabbix user in Kubernetes
+```bash
 $ kubectl apply -n kube-system -f zabbix-user-example.yml
-
+```
 ## Retrieve API SERVER
 ```bash
 $ APISERVER=https://$(kubectl -n default get endpoints kubernetes --no-headers | awk '{ print $2 }')

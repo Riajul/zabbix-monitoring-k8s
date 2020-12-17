@@ -14,13 +14,13 @@ This will help to monitor kubernetes with zabbix. This template is customized fo
 $ kubectl apply -n kube-system -f zabbix-user-example.yml
 
 ## Retrieve API SERVER
+```bash
 $ APISERVER=https://$(kubectl -n default get endpoints kubernetes --no-headers | awk '{ print $2 }')
-
 $ echo $APISERVER
-
+```
 ## Retrieve TOKEN
+```bash
 $ TOKENNAME=$(kubectl get sa/zabbix-user -n kube-system -o jsonpath='{.secrets[0].name}')
 $ TOKEN=$(kubectl -n kube-system get secret $TOKENNAME -o jsonpath='{.data.token}'| base64 --decode)
-
 $ echo $TOKEN
-
+```
